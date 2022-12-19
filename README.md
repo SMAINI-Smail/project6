@@ -37,7 +37,7 @@ Executez la commande  : git clone https://github.com/SMAINI-Smail/projets_OC.git
 Executez la commande  : sudo su 
 
 - Pour le lancement du script : 
-Executez la commande  : python3 /dossier/script.py
+Executez la commande  : python3 /project6/script.py
 
 
 ## Fabriqué avec
@@ -47,8 +47,8 @@ Executez la commande  : python3 /dossier/script.py
 
 LAMP 
 * [linux](https://linuxfr.org) - Systeme d'exploitation
-* [apache2](https://httpd.apache.org) Serveur Web
-* [mariadb](https://mariadb.org)  Système de gestion de base de données relationnelle 
+* [apache2](https://httpd.apache.org) - Serveur Web
+* [mariadb](https://mariadb.org) - Système de gestion de base de données relationnelle 
 * [php](https://www.php.net) - Langage de programmation
 
 wordpress
