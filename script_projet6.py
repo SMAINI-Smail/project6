@@ -171,7 +171,7 @@ if "php" in list_fichier_usr_bin  :
     print( " ___________________  Le programme PHP est dèja installé sur le serveur ___________________ \n")
     fichier.write("___________________ desinstaller php ______________ \n")
     print("___________________ desinstaller php ______________")
-    purge_php= subprocess.Popen(["apt-get","remove", "--purge", "php8.*","-y"] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    purge_php= subprocess.Popen(["apt-get","remove", "--purge", "php7.*","-y"] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     purge_php.stdin.write(purge_php.stdout.encoding) 
     purge_php.stdin.close()
     for line in purge_php.stdout.read():       
@@ -195,23 +195,18 @@ install_dependance.stdin.write(install_dependance.stdout.encoding)
 install_dependance.stdin.close()
 for line in install_dependance.stdout.read(): 
     fichier.write(line)
-# ajout du dépôt pour php8.1
-fichier.write("___________________ Ajout du dépôt pour php8.1___________________  ")
-print("___________________ Ajout du dépôt pour php8.1 ___________________  ")
-os.system("curl -sSL https://packages.sury.org/php/README.txt | sudo bash -x")
-os.system("apt-get update")
 
-# install php8.1
-fichier.write("___________________ Installation de php8.1___________________  ")
-print("___________________ Installation de php8.1____________________  ")
-install_php= subprocess.Popen([  "apt", "install", "php8.1", "-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+# install php7.4
+fichier.write("___________________ Installation de php7.4___________________  ")
+print("___________________ Installation de php7.4____________________  ")
+install_php= subprocess.Popen([  "apt", "install", "php7.4", "-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 install_php.stdin.write(install_php.stdout.encoding)
 install_php.stdin.close()
 for line in install_php.stdout.read(): 
     fichier.write(line)
-fichier.write("___________________ Installation de libapache2-mod-php8.1 __________________  ")
-print("___________________ Installation de libapache2-mod-php8.1 ____________________  ")
-install_libapache2= subprocess.Popen([  "apt", "install", "libapache2-mod-php8.1", "-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+fichier.write("___________________ Installation de libapache2-mod-php7.4 __________________  ")
+print("___________________ Installation de libapache2-mod-php7.4 ____________________  ")
+install_libapache2= subprocess.Popen([  "apt", "install", "libapache2-mod-php7.4", "-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 install_libapache2.stdin.write(install_libapache2.stdout.encoding)
 install_libapache2.stdin.close()
 for line in install_libapache2.stdout.read(): 
@@ -220,7 +215,7 @@ for line in install_libapache2.stdout.read():
 os.system("systemctl restart apache2")
 
 ## installer les dependance de php dont a besoin l'application                                               
-install_php_2= subprocess.Popen([  "apt", "install","php8.1-common","php8.1-curl","php8.1-bcmath","php8.1-intl","php8.1-mbstring","php8.1-xmlrpc", "php8.1-mcrypt","php8.1-mysql","php8.1-gd","php8.1-xml","php8.1-cli","php8.1-zip","-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+install_php_2= subprocess.Popen([  "apt", "install","php7.4-common","php7.4-curl","php7.4-bcmath","php7.4-intl","php7.4-mbstring","php7.4-xmlrpc","php7.4-mysql","php7.4-gd","php7.4-xml","php-mysql","php7.4-cli","php7.4-zip","-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 install_php_2.stdin.write(install_php_2.stdout.encoding)
 install_php_2.stdin.close()
 for line in install_php_2.stdout.read(): 
@@ -228,13 +223,13 @@ for line in install_php_2.stdout.read():
 
 fichier.write("___________________ Améliorer les performances ___________________  ")
 print("___________________Améliorer les performances____________________  ")
-install_performance= subprocess.Popen([  "apt", "install", "php8.1-fpm", "libapache2-mod-fcgid","-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+install_performance= subprocess.Popen([  "apt", "install", "php7.4-fpm", "libapache2-mod-fcgid","-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 install_performance.stdin.write(install_performance.stdout.encoding)
 install_performance.stdin.close()
 for line in install_performance.stdout.read(): 
     fichier.write(line)
 os.system("a2enmod proxy_fcgi setenvif ")
-os.system("a2enconf php8.1-fpm")
+os.system("a2enconf php7.4-fpm")
 os.system("systemctl restart apache2")
 
 fichier.write("------------------------------------- Fin de l'installation et de la configuration PHP -------------------------------------- \n")
@@ -337,33 +332,33 @@ print("------------------------------------- Fin de l'installation et de la conf
 fichier.write("------------------------------------- Installation et configuration de Wordpress -------------------------------------- \n")
 print("------------------------------------- Installation et configuration de Wordpress --------------------------------------")
 
-## instaler curl
-fichier.write("___________________ installer curl  _______________ \n")
-print("___________________ installer curl _______________ ")
-curl= subprocess.Popen(["apt", "install","curl", "-y"] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-curl.stdin.write(curl.stdout.encoding)
-curl.stdin.close()
-for line in curl.stdout.read(): 
-    fichier.write(line)
-
 ##  installation de wp cli
 
-fichier.write("___________________ Recuperer wp-cli  _______________ \n")
-print("___________________ Recuperer wp-cli.phar _______________ ")
+fichier.write("___________________ ajouter le repository _______________ \n")
+print("___________________ ajouter le repository _______________ ")
 cd('/')
-install_wp_cli= subprocess.run(["curl", "-O", "https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar"] )
+add_repo= subprocess.Popen(["add-apt-repository","ppa:tiagohillebrandt/wp-cli"] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+add_repo.stdin.write(add_repo.stdout.encoding)
+add_repo.stdin.close()
+for line in add_repo.stdout.read(): 
+    fichier.write(line)
 
-fichier.write("___________________ lire le fichier wp-cli.phar _______________ \n")
-print("___________________ lire le fichier wp-cli.phar _______________ ")
-os.system("php wp-cli.phar --info")
 
-fichier.write("___________________ donner le droit d'execussion sur wp-cli  _______________ \n")
-print("___________________ donner le droit d'execussion sur wp-cli _______________ ")
-os.system("chmod +x wp-cli.phar")
+fichier.write("___________________ mettre a jours le systeme _______________ \n")
+print("___________________ mettre a jours le systeme _______________ ")
+update= subprocess.Popen(["apt-get","update"] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+update.stdin.write(update.stdout.encoding)
+update.stdin.close()
+for line in update.stdout.read(): 
+    fichier.write(line)
 
-fichier.write("___________________ deplacer le fichier wp-cli.phar vers /usr/local/bin/wp _______________ \n")
-print("___________________ deplacer le fichier wp-cli.phar vers /usr/local/bin/wp _______________ ")
-os.system("mv wp-cli.phar /usr/local/bin/wp")
+fichier.write("___________________ installer wp-cli _______________ \n")
+print("___________________ installer wp-cli_______________ ")
+install_wp= subprocess.Popen(["apt-get","install", "wp-cli"] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+install_wp.stdin.write(install_wp.stdout.encoding)
+install_wp.stdin.close()
+for line in install_wp.stdout.read(): 
+    fichier.write(line)
 
 ## acceder au dossier /var/www/html/wordpress/
 cd('/var/www/html/wordpress/')
@@ -394,6 +389,7 @@ for line in generate_config_php.stdout.read():
     fichier.write(line)
     print(line)
 os.system("chown -R www-data:www-data /var/www/html/wordpress/wp-config.php")
+os.system("chmod 600 /var/www/html/wordpress/wp-config.php")
 os.system("chmod -R 755 $(find /var/www/html/wordpress/ -type d)")
 os.system("chmod -R 644 $(find /var/www/html/wordpress/ -type f)")
 
@@ -409,16 +405,12 @@ for line in create_data_base.stdout.read():
 ## Supprission du fichier /var/www/html/wordpress/wp-config-sample.php qui a fait office d'exemple pour le fichier wp-config.php
 fichier.write("___________________ Supprission du fichier /var/www/html/wordpress/wp-config-sample.php  _______________ \n")
 print("Supprission du fichier /var/www/html/wordpress/wp-config-sample.php ")
-delete_config_sample= subprocess.Popen([ "rm", "-f","/var/www/html/wordpress/wp-config-sample.php"] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-delete_config_sample.stdin.write(delete_config_sample.stdout.encoding) 
-delete_config_sample.stdin.close()
-for line in delete_config_sample.stdout.read(): 
-    fichier.write(line)
+os.system("rm -f /var/www/html/wordpress/wp-config-sample.php")
 
 ## Creation du premier site de l'application installer 
 fichier.write("___________________ Creation du site de l'application_______________ \n")
 print("Creation du site de l'application ")
-install_site= subprocess.Popen(["wp", "--allow-root","core", "install","--url=test.com", "--title='Projet_6'", "--admin_user=admin", "--admin_password=passwd_wp" ,"--admin_email=admin@gmail.fr",] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+install_site= subprocess.Popen(["wp", "--allow-root","core", "install","--url=http://localhost", "--title='Projet_6'", "--admin_user=admin", "--admin_password=passwd_wp" ,"--admin_email=admin@gmail.fr",] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 install_site.stdin.write(install_site.stdout.encoding)
 install_site.stdin.close()
 for line in install_site.stdout.read(): 
