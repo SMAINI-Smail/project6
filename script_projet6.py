@@ -337,23 +337,19 @@ print("------------------------------------- Installation et configuration de Wo
 fichier.write("___________________ ajouter le repository _______________ \n")
 print("___________________ ajouter le repository _______________ ")
 cd('/')
-os.system("add-apt-repository ppa:tiagohillebrandt/wp-cli")
+install_wp_cli= subprocess.run(["curl", "-O", "https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar"] )
 
-fichier.write("___________________ mettre a jours le systeme _______________ \n")
-print("___________________ mettre a jours le systeme _______________ ")
-update= subprocess.Popen(["apt-get","update"] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-update.stdin.write(update.stdout.encoding)
-update.stdin.close()
-for line in update.stdout.read(): 
-    fichier.write(line)
+fichier.write("___________________ lire le fichier wp-cli.phar _______________ \n")
+print("___________________ lire le fichier wp-cli.phar _______________ ")
+os.system("php wp-cli.phar --info")
 
-fichier.write("___________________ installer wp-cli _______________ \n")
-print("___________________ installer wp-cli_______________ ")
-install_wp= subprocess.Popen(["apt-get","install", "wp-cli"] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-install_wp.stdin.write(install_wp.stdout.encoding)
-install_wp.stdin.close()
-for line in install_wp.stdout.read(): 
-    fichier.write(line)
+fichier.write("___________________ donner le droit d'execussion sur wp-cli  _______________ \n")
+print("___________________ donner le droit d'execussion sur wp-cli _______________ ")
+os.system("chmod +x wp-cli.phar")
+
+fichier.write("___________________ deplacer le fichier wp-cli.phar vers /usr/local/bin/wp _______________ \n")
+print("___________________ deplacer le fichier wp-cli.phar vers /usr/local/bin/wp _______________ ")
+os.system("mv wp-cli.phar /usr/local/bin/wp")
 
 ## acceder au dossier /var/www/html/wordpress/
 cd('/var/www/html/wordpress/')
