@@ -337,12 +337,7 @@ print("------------------------------------- Installation et configuration de Wo
 fichier.write("___________________ ajouter le repository _______________ \n")
 print("___________________ ajouter le repository _______________ ")
 cd('/')
-add_repo= subprocess.Popen(["add-apt-repository","ppa:tiagohillebrandt/wp-cli"] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-add_repo.stdin.write(add_repo.stdout.encoding)
-add_repo.stdin.close()
-for line in add_repo.stdout.read(): 
-    fichier.write(line)
-
+os.system("add-apt-repository ppa:tiagohillebrandt/wp-cli")
 
 fichier.write("___________________ mettre a jours le systeme _______________ \n")
 print("___________________ mettre a jours le systeme _______________ ")

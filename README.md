@@ -37,7 +37,7 @@ Executez la commande  : git clone https://github.com/SMAINI-Smail/projets_OC.git
 Executez la commande  : sudo su 
 
 - Pour le lancement du script : 
-Executez la commande  : python3 /project6/script.py
+Executez la commande  : python3 /project6/script_projet6.py
 
 
 ## Fabriqué avec
