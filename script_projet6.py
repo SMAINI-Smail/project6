@@ -199,7 +199,7 @@ for line in install_dependance.stdout.read():
 # install php7.4
 fichier.write("___________________ Installation de php7.4___________________  ")
 print("___________________ Installation de php7.4____________________  ")
-install_php= subprocess.Popen([  "apt", "install", "php7.4", "-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+install_php= subprocess.Popen(["apt", "install", "php7.4","php-mysql","-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 install_php.stdin.write(install_php.stdout.encoding)
 install_php.stdin.close()
 for line in install_php.stdout.read(): 
@@ -215,7 +215,7 @@ for line in install_libapache2.stdout.read():
 os.system("systemctl restart apache2")
 
 ## installer les dependance de php dont a besoin l'application                                               
-install_php_2= subprocess.Popen([  "apt", "install","php7.4-common","php7.4-curl","php7.4-bcmath","php7.4-intl","php7.4-mbstring","php7.4-xmlrpc","php7.4-mysql","php7.4-gd","php7.4-xml","php-mysql","php7.4-cli","php7.4-zip","-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+install_php_2= subprocess.Popen(["apt", "install","php7.4-common","php7.4-curl","php7.4-bcmath","php7.4-intl","php7.4-mbstring","php7.4-xmlrpc","php7.4-gd","php7.4-xml","php7.4-cli","php7.4-zip","-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 install_php_2.stdin.write(install_php_2.stdout.encoding)
 install_php_2.stdin.close()
 for line in install_php_2.stdout.read(): 
@@ -223,7 +223,7 @@ for line in install_php_2.stdout.read():
 
 fichier.write("___________________ Améliorer les performances ___________________  ")
 print("___________________Améliorer les performances____________________  ")
-install_performance= subprocess.Popen([  "apt", "install", "php7.4-fpm", "libapache2-mod-fcgid","-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+install_performance= subprocess.Popen(["apt", "install", "php7.4-fpm", "libapache2-mod-fcgid","-y" ] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 install_performance.stdin.write(install_performance.stdout.encoding)
 install_performance.stdin.close()
 for line in install_performance.stdout.read(): 
