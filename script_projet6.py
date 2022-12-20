@@ -406,7 +406,7 @@ os.system("rm -f /var/www/html/wordpress/wp-config-sample.php")
 ## Creation du premier site de l'application installer 
 fichier.write("___________________ Creation du site de l'application_______________ \n")
 print("Creation du site de l'application ")
-install_site= subprocess.Popen(["wp", "--allow-root","core", "install","--url=http://localhost", "--title='Projet_6'", "--admin_user=admin", "--admin_password=passwd_wp" ,"--admin_email=admin@gmail.fr",] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+install_site= subprocess.Popen(["wp", "--allow-root","core", "install","--url=http://93.21.160.148:2936/", "--title='Projet_6'", "--admin_user=admin", "--admin_password=passwd_wp" ,"--admin_email=admin@gmail.fr",] ,stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 install_site.stdin.write(install_site.stdout.encoding)
 install_site.stdin.close()
 for line in install_site.stdout.read(): 
