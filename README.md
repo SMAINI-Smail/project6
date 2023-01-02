@@ -5,7 +5,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/built-with-wordpress.svg)](https://forthebadge.com)
 
 
-c'est pour un projet pour la formation <<  >>
+c'est pour le projet 06 << Participez à la vie de la communauté Open Source >>
 
 ## Pour commencer
 
@@ -30,7 +30,7 @@ Executez la commande  : apt-get install python -y
 Les étapes pour lancer le script
 
 - Recupérer le script depuis github: 
-Executez la commande  : git clone https://github.com/SMAINI-Smail/projets_OC.git
+Executez la commande  : git clone https://github.com/SMAINI-Smail/project6.git
 
 - Lancer le terminal 
 - Se connecter autant que root 
@@ -58,5 +58,9 @@ wordpress
 ## Auteurs
 
 * **SMAINI Smail** _alias_ [@SMAINI-Smail](https://github.com/SMAINI-Smail)
+
+## License
+
+Ce projet est sous licence ``GNU General Public Licence v3.0`` - voir le fichier [License.md](License.md) pour plus d'informations
 
 
