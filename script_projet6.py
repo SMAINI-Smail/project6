@@ -1,3 +1,16 @@
+###########################################################################################
+##                                                                                       ##
+##                       - Auteur : SMAINI Smail -                                       ##
+##                                                                                       ##
+##                   - Email  : smaini.smail@gmail.com -                                 ##
+##                                                                                       ##
+##               - Github     : https://github.com/SMAINI-Smail -                        ##
+##                                                                                       ##
+##        - Projet 6    : Participez à la vie de la communauté Open Source -             ##
+##                                                                                       ##
+###########################################################################################
+
+
 import subprocess
 import os
 from pathlib import Path
@@ -33,7 +46,6 @@ for line in update_system_2.stdout.read():
 fichier.write("fin de la mise à jour du systeme \n \n  ")
 
 print("fin de la mise à jour du systeme \n \n  ")
-
 
 
 ### Installation et configuration du serveur apache 2
@@ -173,8 +185,6 @@ apache_config.close()
 
 fichier.write("Fin de l'installation et de la configuration du serveur apache 2 \n \n  ")
 print("Fin de l'installation et de la configuration du serveur apache 2 - ")
-
-
 
 
 fichier.write("Installation et configuration PHP \n \n  ")
