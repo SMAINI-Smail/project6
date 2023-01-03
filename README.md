@@ -36,13 +36,13 @@ Alors, pour pouvoir utiliser de ce script,  il est nécessaire d'avoir un accès
 
 - 1 - Ouvrez une ligne de commande et passez root dessus (su root)
 
-- 2 - Vous clonez le projet en question en tapant : git clone [URL du projet]
+- 2 - Vous clonez le projet en question en tapant : git clone https://github.com/SMAINI-Smail/project6.git (le projet sera cloner exactement la ou la commande git clone sera exécutée)
   
-- 3 - Vous allez ensuite accéder au projet avec : cd [nom_du_projet]
+- 3 - Vous allez ensuite accéder au projet avec : cd ./projet6
   
-- 4 - Vous lancer la commande suivante pour lancer l'installation du script : python3 [nom_du_programme_en_question]
+- 4 - Vous lancer la commande suivante pour lancer l'installation du script : python3 script_projet6.py
   
-Et vous laissez dérouler jusqu'a la fin de l'installation, des messages informatifs vont ce déroulés durant tous le processus de l'installation vous informant de ce que le script est en train de faire.
+Le script va ce lancer, vous laissez dérouler jusqu'a la fin de l'installation. Des messages informatifs vont ce déroulés durant tous le processus de l'installation vous informant de ce que le script est en train de faire et ce jusqu'a la fin de la procédure de l'installation de la stack LAMP et de l'instance Wordpress.
 
 
   
