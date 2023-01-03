@@ -69,6 +69,6 @@ SMAINI Smail
 
 #### License ####
 
-Ce projet est sous licence <<GNU General Public Licence v3.0>> - voir le fichier [License.md](License.md) pour plus d'informations
+Ce projet est sous licence [GNU General Public Licence v3.0] - voir le fichier [License.md](License.md) pour plus d'informations
 
 
