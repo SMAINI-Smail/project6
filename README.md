@@ -36,7 +36,9 @@ Alors, pour pouvoir utiliser de ce script,  il est nécessaire d'avoir un accès
 
 - 1 - Ouvrez une ligne de commande et passez root dessus (su root)
 
-- 2 - Vous clonez le projet en question en tapant : git clone https://github.com/SMAINI-Smail/project6.git (le projet sera cloner exactement la ou la commande git clone sera exécutée)
+- 2 - Vous clonez le projet en question en tapant : git clone https://github.com/SMAINI-Smail/project6.git 
+
+      (le projet sera cloner exactement la ou la commande git clone sera exécutée)
   
 - 3 - Vous allez ensuite accéder au projet avec : cd ./projet6
   
